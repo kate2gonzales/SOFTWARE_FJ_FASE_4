@@ -1,6 +1,6 @@
 # Software-FJ – Sistema de Reservas de Servicios
 
-**Autor:** Julio Cesar Martinez  y Wendy tatiana coquinche gonzales
+**Autor:** Julio Cesar Martinez y Wendy Tatiana Coquinche Gonzales  
 **Grupo:** 213023_432  
 **Curso:** Programación 213023 – UNAD  
 **Fase:** Fase 4 – Programación Orientada a Objetos
@@ -37,12 +37,18 @@ El proyecto está organizado en los siguientes archivos:
 
 ## 4. Conceptos de Programación Orientada a Objetos aplicados
 
-- **Abstracción:** implementación de la clase abstracta `Servicio`, que define el método para calcular los costos.
+- **Abstracción:** implementación de la clase abstracta `Servicio`, que define comportamientos comunes para los servicios.
 - **Herencia:** las clases de los diferentes servicios heredan de la clase base `Servicio`.
 - **Polimorfismo:** cada tipo de servicio implementa su propio comportamiento para calcular el costo.
 - **Encapsulamiento:** utilización de atributos y métodos para controlar el acceso y la modificación de la información.
 
-## 5. Ejecución del proyecto
+## 5. Manejo de excepciones y registro de eventos
+
+El sistema incorpora excepciones personalizadas para identificar y controlar diferentes situaciones de error, como datos inválidos, operaciones no permitidas, reservas incorrectas y servicios no disponibles.
+
+También utiliza un módulo de registro de eventos (`utils_log.py`) que permite guardar información sobre las operaciones y los errores del sistema en el archivo `sistema.log`.
+
+## 6. Ejecución del proyecto
 
 Para ejecutar el sistema se deben seguir estos pasos:
 
@@ -52,28 +58,28 @@ Para ejecutar el sistema se deben seguir estos pasos:
 4. Ejecutar el programa principal con el siguiente comando:
 
 ```bash
-python main.py
+py main.py
 ```
 
 Para ejecutar las diez simulaciones complementarias:
 
 ```bash
-python simulaciones_compañero.py
+py simulaciones_compañero.py
 ```
 
-## 6. Pruebas y validaciones
+## 7. Pruebas y validaciones
 
-El proyecto incluye pruebas orientadas a comprobar el funcionamiento de los servicios, la gestión de clientes y las operaciones de reserva.
+El proyecto incluye diez simulaciones orientadas a comprobar el funcionamiento de los servicios, la gestión de clientes y las operaciones de reserva.
 
-También contempla situaciones de error, validaciones de datos y manejo de excepciones, con el propósito de verificar la respuesta del sistema ante diferentes escenarios.
+Las pruebas contemplan escenarios válidos y situaciones de error, con el propósito de verificar las validaciones, el manejo de excepciones y la estabilidad del sistema.
 
-## 7. Repositorio del proyecto
+## 8. Repositorio del proyecto
 
 El código fuente y los archivos del proyecto se encuentran disponibles en GitHub:
 
-https://github.com/kate2gonzales/SOFTWARE_FJ_FASE_4
+[Software-FJ – Repositorio en GitHub](https://github.com/kate2gonzales/SOFTWARE_FJ_FASE_4)
 
 ---
 
 **Proyecto académico – Universidad Nacional Abierta y a Distancia (UNAD)**  
-**Curso: Programación – Fase 4**
+**Curso:** Programación – Fase 4

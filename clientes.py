@@ -41,10 +41,19 @@ class Cliente(EntidadBase):
         if not isinstance(self.__documento, str) or not self.__documento.strip():
             raise ErrorValidacion("El documento del cliente es obligatorio.")
 
+        if not isinstance(self.__correo, str):
+            raise ErrorValidacion("El correo electrónico no es válido.")
+
+        correo = self.__correo.strip()
+
         if (
-            not isinstance(self.__correo, str)
-            or "@" not in self.__correo
-            or "." not in self.__correo
+            correo.count("@") != 1
+            or " " in correo
+            or correo.startswith("@")
+            or correo.endswith("@")
+            or "." not in correo.split("@")[1]
+            or correo.split("@")[1].startswith(".")
+            or correo.split("@")[1].endswith(".")
         ):
             raise ErrorValidacion("El correo electrónico no es válido.")
 

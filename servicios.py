@@ -10,16 +10,8 @@ métodos sobrecargados.
 
 from abc import ABC, abstractmethod
 
-try:
-    from excepciones import DatosInvalidosError, ServicioNoDisponibleError, CalculoInconsistenteError
-    from utils_log import registrar_log
-except ImportError:
-    class DatosInvalidosError(Exception): pass
-    class ServicioNoDisponibleError(Exception): pass
-    class CalculoInconsistenteError(Exception): pass
-    def registrar_log(tipo, mensaje):
-        with open("registro_eventos.log", "a", encoding="utf-8") as f:
-            f.write(f"[{tipo}] {mensaje}\n")
+from excepciones import DatosInvalidosError, ServicioNoDisponibleError, CalculoInconsistenteError
+from utils_log import registrar_log
 
 class Servicio(ABC):
     """Clase abstracta que representa un servicio general de Software FJ."""
@@ -55,28 +47,73 @@ class Servicio(ABC):
     def validar_parametros(self):
         pass
 
+    
     @abstractmethod
     def describir(self):
         pass
 
     def calcular_costo_con_impuesto(self, impuesto=0.19):
-        """Variante 1: costo + impuesto (19% IVA Colombia)"""
+        """Calcula el costo aplicando un impuesto válido."""
         try:
+            if not isinstance(impuesto, (int, float)) or isinstance(impuesto, bool):
+                raise CalculoInconsistenteError(
+                    "El impuesto debe ser un número."
+                )
+
             if impuesto < 0:
-                raise CalculoInconsistenteError("El impuesto no puede ser negativo")
+                raise CalculoInconsistenteError(
+                    "El impuesto no puede ser negativo."
+                )
+
             return self.calcular_costo() * (1 + impuesto)
+
         except Exception as e:
-            registrar_log("ERROR", f"Error en calcular_costo_con_impuesto: {e}")
-            raise CalculoInconsistenteError("Fallo cálculo con impuesto") from e
+            registrar_log(
+                "ERROR",
+                f"Error en calcular_costo_con_impuesto: {e}"
+            )
+            raise CalculoInconsistenteError(
+                "Fallo cálculo con impuesto."
+            ) from e
 
     def calcular_costo_con_descuento(self, descuento=0.0):
-        """Variante 2: costo con descuento (0 a 0.5)"""
+        """Calcula el costo aplicando un descuento válido."""
+
+        if not isinstance(descuento, (int, float)) or isinstance(descuento, bool):
+            raise CalculoInconsistenteError(
+                "El descuento debe ser un número."
+            )
+
         if descuento < 0 or descuento > 0.5:
-            raise CalculoInconsistenteError("Descuento debe estar entre 0 y 0.5")
+            raise CalculoInconsistenteError(
+                "El descuento debe estar entre 0 y 0.5."
+            )
+
         return self.calcular_costo() * (1 - descuento)
 
     def calcular_costo_total(self, impuesto=0.19, descuento=0.0):
-        """Variante 3: costo con impuesto Y descuento"""
+        """Calcula el costo total validando impuesto y descuento."""
+
+        if not isinstance(impuesto, (int, float)) or isinstance(impuesto, bool):
+            raise CalculoInconsistenteError(
+                "El impuesto debe ser un número."
+            )
+
+        if not isinstance(descuento, (int, float)) or isinstance(descuento, bool):
+            raise CalculoInconsistenteError(
+                "El descuento debe ser un número."
+            )
+
+        if impuesto < 0:
+            raise CalculoInconsistenteError(
+                "El impuesto no puede ser negativo."
+            )
+
+        if descuento < 0 or descuento > 0.5:
+            raise CalculoInconsistenteError(
+                "El descuento debe estar entre 0 y 0.5."
+            )
+
         costo = self.calcular_costo() * (1 - descuento)
         return costo * (1 + impuesto)
 

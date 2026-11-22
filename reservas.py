@@ -9,17 +9,8 @@ con try/except/else/finally y encadenamiento.
 import traceback
 from datetime import datetime
 
-try:
-    from excepciones import ReservaInvalidaError, ServicioNoDisponibleError, OperacionNoPermitidaError, CalculoInconsistenteError
-    from utils_log import registrar_log
-except ImportError:
-    class ReservaInvalidaError(Exception): pass
-    class ServicioNoDisponibleError(Exception): pass
-    class OperacionNoPermitidaError(Exception): pass
-    class CalculoInconsistenteError(Exception): pass
-    def registrar_log(tipo, mensaje):
-        with open("registro_eventos.log", "a", encoding="utf-8") as f:
-            f.write(f"[{tipo}] {mensaje}\n")
+from excepciones import ReservaInvalidaError, ServicioNoDisponibleError, OperacionNoPermitidaError, CalculoInconsistenteError
+from utils_log import registrar_log
 
 class Reserva:
     """Reserva: integra Cliente + Servicio + duración + estado."""
@@ -32,8 +23,12 @@ class Reserva:
             raise ReservaInvalidaError("La reserva requiere un Cliente válido")
         if servicio is None or not hasattr(servicio, "calcular_costo"):
             raise ReservaInvalidaError("La reserva requiere un Servicio válido")
-        if duracion is None or duracion <= 0:
-            raise ReservaInvalidaError("La duración debe ser mayor a 0")
+        
+        if not isinstance(duracion, (int, float)) or isinstance(duracion, bool) or duracion <= 0:
+            raise ReservaInvalidaError(
+                "La duración debe ser un número mayor a 0."
+            )
+        
         self._id = id_reserva
         self._cliente = cliente
         self._servicio = servicio
