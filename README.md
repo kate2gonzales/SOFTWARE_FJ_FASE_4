@@ -1,6 +1,6 @@
 # Software-FJ – Sistema de Reservas de Servicios
 
-**Autor:** Julio Cesar Martinez  y Wendy taiana coquinche gonzales
+**Autor:** Julio Cesar Martinez  y Wendy tatiana coquinche gonzales
 **Grupo:** 213023_432  
 **Curso:** Programación 213023 – UNAD  
 **Fase:** Fase 4 – Programación Orientada a Objetos
