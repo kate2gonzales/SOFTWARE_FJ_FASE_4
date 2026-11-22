@@ -1,28 +1,79 @@
-# Software-FJ - Sistema de Reservas de Servicios
+# Software-FJ – Sistema de Reservas de Servicios
 
-**Autor:** Julio Cesar Martinez
-**Grupo:** 213023_432
-**Curso:** Programación 213023 - UNAD
-**Fase:** Fase 4 - Programación Orientada a Objetos
+**Autor:** Julio Cesar Martinez  y Wendy taiana coquinche gonzales
+**Grupo:** 213023_432  
+**Curso:** Programación 213023 – UNAD  
+**Fase:** Fase 4 – Programación Orientada a Objetos
 
-## Descripción del Proyecto
-Sistema para gestionar reservas de servicios de una empresa.
-Permite reservar salas, alquilar equipos y contratar asesorías especializadas,
-calculando el costo total de cada servicio de forma automática.
+## 1. Descripción del proyecto
 
-## Estructura del Proyecto
-- `servicios.py` - Clase abstracta `Servicio` y los 3 servicios: `ReservaSala`, `AlquilerEquipo` y `AsesoriaEspecializada`
-- `reservas.py` - Clase `Reserva` que une un cliente con un servicio
-- `main.py` - 10 simulaciones exigidas por la guía
+Software-FJ es un sistema desarrollado en Python para gestionar reservas de servicios de una empresa. Permite administrar clientes, realizar reservas de diferentes servicios y calcular automáticamente sus costos.
 
-## Conceptos de POO Aplicados
-- **Abstracción:** Clase abstracta `Servicio` con método `calcular_costo()`
-- **Herencia:** Los 3 servicios heredan de `Servicio`
-- **Polimorfismo:** Cada servicio calcula su costo a su manera
-- **Encapsulación:** Atributos privados con `_` y métodos para manejarlos
+El sistema contempla servicios como reserva de salas, alquiler de equipos y asesorías especializadas. Además, incorpora validaciones, manejo de excepciones y registro de eventos para contribuir al correcto funcionamiento del programa.
 
-## Cómo Ejecutar
-1. Abrir la carpeta en Visual Studio Code
-2. En la terminal escribir:
+## 2. Objetivos del proyecto
+
+- Aplicar los principios de la Programación Orientada a Objetos (POO).
+- Gestionar clientes y reservas de servicios.
+- Implementar validaciones para controlar datos incorrectos.
+- Calcular los costos de los servicios mediante métodos específicos.
+- Realizar pruebas para verificar el funcionamiento y la estabilidad del sistema.
+
+## 3. Estructura del proyecto
+
+El proyecto está organizado en los siguientes archivos:
+
+| Archivo | Descripción |
+|---|---|
+| `main.py` | Programa principal y pruebas de funcionamiento del sistema. |
+| `servicios.py` | Clase abstracta `Servicio` y sus servicios derivados. |
+| `reservas.py` | Clase `Reserva` y operaciones relacionadas con las reservas. |
+| `clientes.py` | Definición de la clase `Cliente`. |
+| `entidades.py` | Definición de entidades utilizadas en el sistema. |
+| `gestor_clientes.py` | Gestión de los clientes registrados. |
+| `excepciones.py` | Excepciones personalizadas para el manejo de errores. |
+| `utils_log.py` | Funciones de apoyo para el registro de eventos. |
+| `simulaciones_compañero.py` | Archivo complementario con diez simulaciones de validación. |
+
+## 4. Conceptos de Programación Orientada a Objetos aplicados
+
+- **Abstracción:** implementación de la clase abstracta `Servicio`, que define el método para calcular los costos.
+- **Herencia:** las clases de los diferentes servicios heredan de la clase base `Servicio`.
+- **Polimorfismo:** cada tipo de servicio implementa su propio comportamiento para calcular el costo.
+- **Encapsulamiento:** utilización de atributos y métodos para controlar el acceso y la modificación de la información.
+
+## 5. Ejecución del proyecto
+
+Para ejecutar el sistema se deben seguir estos pasos:
+
+1. Descargar o clonar el repositorio de GitHub.
+2. Abrir la carpeta del proyecto en Visual Studio Code.
+3. Abrir una terminal dentro de la carpeta del proyecto.
+4. Ejecutar el programa principal con el siguiente comando:
+
 ```bash
 python main.py
+```
+
+Para ejecutar las diez simulaciones complementarias:
+
+```bash
+python simulaciones_compañero.py
+```
+
+## 6. Pruebas y validaciones
+
+El proyecto incluye pruebas orientadas a comprobar el funcionamiento de los servicios, la gestión de clientes y las operaciones de reserva.
+
+También contempla situaciones de error, validaciones de datos y manejo de excepciones, con el propósito de verificar la respuesta del sistema ante diferentes escenarios.
+
+## 7. Repositorio del proyecto
+
+El código fuente y los archivos del proyecto se encuentran disponibles en GitHub:
+
+https://github.com/kate2gonzales/SOFTWARE_FJ_FASE_4
+
+---
+
+**Proyecto académico – Universidad Nacional Abierta y a Distancia (UNAD)**  
+**Curso: Programación – Fase 4**
